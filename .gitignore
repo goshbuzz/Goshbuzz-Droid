@@ -1,0 +1,36 @@
+# Build outputs
+out/
+out-*/
+dist/
+*.img
+*.zip
+*.tar.gz
+
+# Android/Java artifacts
+*.apk
+*.apks
+*.aab
+*.jar
+*.class
+.gradle/
+local.properties
+keystore.properties
+*.jks
+*.keystore
+
+# Signing material must never enter Git, even accidentally
+keys/
+*.pem
+*.p12
+*.pfx
+*.asc
+
+# Tooling noise
+.idea/
+.vscode/
+*.swp
+.DS_Store
+__pycache__/
+*.pyc
+node_modules/
+.pytest_cache/
