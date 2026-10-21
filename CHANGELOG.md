@@ -6,6 +6,11 @@ Format: loose [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) style. No
 
 ### Added
 
+- Phase 0 static landing page in `installer-web/` (AGPL-3.0-or-later), with an explicit
+  nothing-installable notice, documentation and honest-limits links, local CSS, and no JavaScript.
+- Static Vercel configuration and deployment/rollback instructions. Production publication and
+  production HTTP/browser checks remain pending owner approval.
+
 - Phase 0 documentation skeleton: `docs/index.md`, repository README with honest limits, directory layout
   matching `docs/spec/03_ARCHITECTURE.md` §7.
 - `docs/threat-model.md` v1 (draft, T0.3): assets, adversaries, in-scope, partly in-scope, out-of-scope,
@@ -29,4 +34,4 @@ Format: loose [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) style. No
 
 - Docs site deployment, Matrix room, branch protection and private vulnerability reporting (owner actions).
 - Bill of materials for AOSP components and bundled apps.
-- Any code, image, or download.
+- Any OS code, image, APK, or download. The informational landing page is not an installer.
