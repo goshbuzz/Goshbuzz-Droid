@@ -26,6 +26,15 @@ Format: loose [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) style. No
   (`tree/main/installer-web`) instead of the previous session branch, per the AGPL source-link check.
   The deployed bytes are commit `fb1143f`; `main` becomes byte-identical to the deployed page when
   the open pull request merges (auto-deploy is off, so nothing redeploys).
+- T1.1 build-host plan (`docs/build-host-plan.md`, no budget): verified AOSP hardware/OS requirements,
+  option comparison with approximate (unverified-quote) costs, chosen setup = owner's existing machine
+  after a read-only check, and the official Ubuntu package steps. No hardware purchased or rented.
+- T1.3-pre AOSP emulator preparation (`docs/testing/emulator-first-boot-prep.md`, `ci/aosp-emulator-build.sh`):
+  verified against official AOSP docs on 2026-10-21 — pin `android-17.0.0_r1` (CP2A.260605.016),
+  manifest `https://android.googlesource.com/platform/manifest`, target
+  `aosp_cf_x86_64_only_phone-aosp_current-userdebug`, Cuttlefish launch via `launch_cvd`. The script
+  is committed but **not executed** (no build host yet; the agent environment fails the check by
+  design).
 
 - Phase 0 documentation skeleton: `docs/index.md`, repository README with honest limits, directory layout
   matching `docs/spec/03_ARCHITECTURE.md` §7.

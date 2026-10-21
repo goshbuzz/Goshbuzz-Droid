@@ -21,6 +21,8 @@
 | [licensing.md](licensing.md) | License options and a recommendation (decision pending) |
 | [testing/phase-0-checklist.md](testing/phase-0-checklist.md) | Where Phase 0 actually stands |
 | [testing/test-phone-shortlist.md](testing/test-phone-shortlist.md) | Which test phone to buy, and what must be verified first (T0.5) |
+| [build-host-plan.md](build-host-plan.md) | T1.1: what an AOSP build host needs, the options, and the no-budget decision |
+| [testing/emulator-first-boot-prep.md](testing/emulator-first-boot-prep.md) | T1.3-pre: the verified AOSP tag, URLs, packages, and commands for the emulator first boot |
 
 ## For contributors
 

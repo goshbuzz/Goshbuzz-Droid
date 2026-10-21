@@ -20,7 +20,7 @@ Updated 2026-10-21.
 | 11 | Threat model v1 | T0.3 | draft ready | Owner review, then sign off in §9 of the doc |
 | 12 | Network-connections document | T0.4 | template ready | Real rows require a build, so this completes in Phase 2 (T2.6) |
 | 13 | Test phone chosen | T0.5 | **decided: none for now** | No budget. Phase 1 runs on the emulator. The owner's Tecno Spark is a Lite/tester device, not a build target |
-| 14 | Build machine plan | T1.1 | not started | Needs #13 and a budget ceiling |
+| 14 | Build machine plan | T1.1 | plan written 2026-10-21 | `docs/build-host-plan.md`. No machine provisioned: owner must run the read-only host check in §3 of that doc; Phase 0 gate stays open until a host passes it |
 | 15 | Public repo | — | public | Confirmed in Vercel Git metadata on 2026-10-21 |
 | 16 | Matrix room | — | not started | Owner action |
 
@@ -31,9 +31,11 @@ Updated 2026-10-21.
 3. ~~Approve publication of the static Phase 0 landing page to `goshbuzz-droid.vercel.app`.~~
    **Done 2026-10-21** (approved and published). A rendered documentation site remains separate;
    the landing page links to GitHub docs.
-4. Optional, free: run the one read-only command block in `test-phone-shortlist.md` §2.5 against the Tecno
+4. Run the read-only build-host check in `docs/build-host-plan.md` §3 on your own PC. It prints
+   CPU/RAM/disk and changes nothing. It decides whether Phase 1 can use the machine you already own.
+5. Optional, free: run the one read-only command block in `test-phone-shortlist.md` §2.5 against the Tecno
    Spark, so we know exactly what that device can do for Lite testing.
-5. Merge the open pull request carrying the publication results and the footer source-link fix. Git
+6. Merge the open pull request carrying the publication results and the footer source-link fix. Git
    auto-deploy is off, so merging redeploys nothing; `main` simply becomes byte-identical to the
    already-deployed page.
 
