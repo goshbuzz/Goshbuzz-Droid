@@ -1,0 +1,4 @@
+License: GNU AGPL v3 or later (SPDX: AGPL-3.0-or-later). See ../LICENSING.md and ../LICENSES/AGPL-3.0.txt.
+
+AGPL is used here on purpose: if you run a modified version of this network service for others, those users
+must be offered its source.
