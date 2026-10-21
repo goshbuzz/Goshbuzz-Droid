@@ -8,8 +8,24 @@ Format: loose [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) style. No
 
 - Phase 0 static landing page in `installer-web/` (AGPL-3.0-or-later), with an explicit
   nothing-installable notice, documentation and honest-limits links, local CSS, and no JavaScript.
-- Static Vercel configuration and deployment/rollback instructions. Production publication and
-  production HTTP/browser checks remain pending owner approval.
+- Static Vercel configuration and deployment/rollback instructions.
+
+### Changed
+
+- **Landing page published** to `https://goshbuzz-droid.vercel.app` on 2026-10-21 with owner
+  approval: project Root Directory set to `installer-web` (Framework Other/`null`, no build/install
+  command, output directory `.`), then one explicit production deployment (`dpl_3QwW2BmQvh62qQbSVHgXDpXRDjFM`,
+  commit `fb1143f`) — Git auto-deployments remain disabled. Verified live: HTTP 200 at `/`, security
+  headers exactly as configured in `installer-web/vercel.json` (third-party raw header capture, grade
+  A+), CSS served and byte-identical to the repository file, all seven documentation/source links
+  return HTTP 200, and the served HTML is byte-identical to `installer-web/index.html` (response
+  `etag` matches the source MD5). Rendered mobile layout and an in-browser network capture remain
+  **unverified** (no browser in the verification environment); "no external requests" is supported by
+  source inspection plus the live `default-src 'none'` CSP, not by a browser network trace.
+- Landing-page footer "Page source" link now points at the merged main path
+  (`tree/main/installer-web`) instead of the previous session branch, per the AGPL source-link check.
+  The deployed bytes are commit `fb1143f`; `main` becomes byte-identical to the deployed page when
+  the open pull request merges (auto-deploy is off, so nothing redeploys).
 
 - Phase 0 documentation skeleton: `docs/index.md`, repository README with honest limits, directory layout
   matching `docs/spec/03_ARCHITECTURE.md` §7.
