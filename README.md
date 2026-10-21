@@ -44,8 +44,10 @@ The maintained list of what is and is not mitigated lives in [docs/threat-model.
 
 - **Name:** GoshBuzz OS (working name). "Android" is a Google trademark and never appears in our product
   name or branding; we describe the project as "based on the Android Open Source Project".
-- **License:** project code license is **not chosen yet** — see [docs/licensing.md](docs/licensing.md).
-  Kernel sources for every distributed build will be published under the GPL.
+- **License:** GPL-3.0-or-later for OS code, AGPL-3.0-or-later for the installer and update server,
+  Apache-2.0 for docs and device data. Full mapping and reasoning: [LICENSING.md](LICENSING.md).
+  Kernel sources for every distributed build are published under GPL-2.0, per device.
+- **Contributions:** Developer Certificate of Origin 1.1, no CLA — see [DCO.md](DCO.md).
 - **Team:** one developer today. Contributions and device maintainers welcome.
 - **Telemetry:** none by default. Optional only, always previewed before sending.
 
@@ -65,6 +67,12 @@ The maintained list of what is and is not mitigated lives in [docs/threat-model.
 | `ota-server/` | Static update server configuration |
 | `ci/` | Build and verification scripts |
 | `tools/` | Signing, hashing, and release helpers |
+
+## Status of the build
+
+Nothing is buildable yet. Phase 1 will start on the Android emulator, because there is no budget for a test
+device and the owner's phone (a Tecno Spark) is a Lite-testing target rather than a build target — the reasons
+are written out in [docs/testing/test-phone-shortlist.md](docs/testing/test-phone-shortlist.md) §2.5.
 
 ## Getting involved
 

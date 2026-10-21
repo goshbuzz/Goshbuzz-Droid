@@ -1,8 +1,15 @@
-# Licensing options (decision pending — T0.1)
+# Licensing analysis (T0.1 — decided 2026-10-21)
 
-Status: **analysis and recommendation. No license has been chosen. No `LICENSE` file exists yet.**
-Do not copy code into this repository expecting a particular license until this is decided and recorded in
-the decision log at the end of `spec/02_PROJECT_SPEC.md`.
+> **This document is now history, not policy.** The decision was made on 2026-10-21 and is implemented in
+> [`../LICENSING.md`](../LICENSING.md), with the full license texts in [`../LICENSES/`](../LICENSES/).
+> Read that file first. This page is kept because the reasoning behind the choice matters later, when someone
+> asks "why GPLv3 and not Apache-2.0?".
+
+Status: **decided.** The owner asked for the option that best serves security and privacy; the implemented
+choice is stricter than the recommendation below (Lite moved from Apache-2.0 to GPL-3.0-or-later, and the
+installer and update server are AGPL). Rationale: for a privacy project, the value of copyleft is that users
+can verify and republish what they run, and a privacy app that cannot be audited by its users is the wrong
+trade.
 
 This is engineering guidance, not legal advice. The owner should confirm the final choice, and the
 distribution-side questions (see `spec/07_LEGAL_AND_RISKS.md`), with a qualified lawyer before a public
@@ -28,7 +35,7 @@ release.
 | C | **MPL-2.0** per file | weak, file-level | Mixed tree works: our files protected, Apache-2.0 upstream untouched; simple compliance | Weaker against a closed fork than GPL; less familiar to Android contributors |
 | D | **Mixed:** GPLv3 for OS code, Apache-2.0 for apps and docs | mixed | Reflects the real split: OS-level changes stay open, app-level code is easy to reuse | Two licenses means two sets of notices and contributor confusion; needs clear per-directory labeling |
 
-## Recommendation
+## Recommendation at the time (superseded in one respect — see the note above)
 
 **Option D**, with the split written into the tree before the first code lands:
 
@@ -52,6 +59,8 @@ tracking, and ship it on the reputation of the name.
    licenses grant no name rights; without a trademark policy anyone can ship a hostile build called "GoshBuzz".
 
 ## What happens after the decision
+
+_Status: steps 1, 2 and 5 are done (`LICENSES/`, per-directory `LICENSE` markers, `DCO.md`); the bill of materials is not started._
 
 1. Add the real `LICENSE` file(s) verbatim — copy the canonical text, do not retype it.
 2. Add a per-directory license marker (short header or `README` note) matching the split.

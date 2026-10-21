@@ -126,3 +126,6 @@ See `04_INSTALLER_SPEC.md`. Target: as simple as installing a theme.
 | Oct 2026 | Telemetry optional with opt-in detailed reports | Need bug data without default collection |
 | Oct 2026 | Name: GoshBuzz OS | Existing brand |
 | Oct 2026 | Install experience: as simple as installing a theme | Owner requirement; see 04 for tiered plan |
+| 2026-10-21 | **License:** GPL-3.0-or-later for all OS code; AGPL-3.0-or-later for `installer-web/` and `ota-server/`; Apache-2.0 for `docs/` and `device-db/`; kernel GPL-2.0-only per device | Owner asked for the maximum security and privacy posture. Copyleft lets users verify and republish what they run; AGPL covers the update server, the highest-value place to betray users. See `LICENSING.md` |
+| 2026-10-21 | **Contributor sign-off:** DCO 1.1, no CLA | No relicensing without contributor consent; see `DCO.md` |
+| 2026-10-21 | **Test device:** no purchase for now; Phase 1 targets the Android emulator first | Owner has no budget for hardware. Owner's available phone is a Tecno Spark, which is a Lite/tester device, not a build target (see `docs/testing/test-phone-shortlist.md`) |

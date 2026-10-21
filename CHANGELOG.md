@@ -16,9 +16,17 @@ Format: loose [Keep a Changelog](https://keepachangelog.com/en/1.1.0/) style. No
 - Governance files: `CONTRIBUTING.md`, `SECURITY.md` (private reporting), `CODE_OF_CONDUCT.md`.
 - `docs/spec/` holds the owner's specification pack, imported unmodified.
 
+### Decided
+
+- **License (T0.1):** GPL-3.0-or-later for OS code and tooling, AGPL-3.0-or-later for `installer-web/` and
+  `ota-server/`, Apache-2.0 for `docs/` and `device-db/`, GPL-2.0 for per-device kernel trees. Texts verbatim in
+  `LICENSES/`; per-directory `LICENSE` markers; reasoning in `LICENSING.md`.
+- **Contributions:** DCO 1.1, no CLA (`DCO.md`).
+- **Test device (T0.5):** no purchase. Phase 1 targets the Android emulator. The owner's Tecno Spark is a
+  Lite-testing device; assessment and the reasons are in `docs/testing/test-phone-shortlist.md` §2.5.
+
 ### Not done yet
 
-- `LICENSE` — blocked on the owner's choice (see `docs/licensing.md`).
-- Test phone selection (T0.5).
-- Docs site deployment, Matrix room, CI.
+- Docs site deployment, Matrix room, branch protection and private vulnerability reporting (owner actions).
+- Bill of materials for AOSP components and bundled apps.
 - Any code, image, or download.

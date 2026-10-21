@@ -1,11 +1,9 @@
 # Test phone shortlist (T0.5) — draft
 
-Status: **draft, incomplete on cost.** The technical research is done; the purchase decision needs three
-answers from the owner (see §6). Prices are deliberately omitted: they vary wildly by country and by second-hand
-condition, and a number I cannot verify today is worse than no number.
-
-Costs nothing to start: **Phase 1's first build can target the Android emulator** (see §2). Do not buy anything
-until you have built and booted once on the emulator.
+Status: **decided 2026-10-21 — no hardware purchase.** Phase 1 builds target the Android emulator. The
+owner's own device (Tecno Spark, exact model to be checked) is a Lite/tester device, not a build target. See §2.5.
+Prices are deliberately omitted: they vary by country and second-hand condition, and a number I cannot verify is
+worse than no number. The Pixel research below stays here for when a budget exists.
 
 ## 1. What the test phone must do for us
 
@@ -86,6 +84,71 @@ published device tree. The cost of that choice is real:
 - **OnePlus / Nothing / Fairphone**: community-friendly on some models, inconsistent across generations and
   regions. Verify per model.
 
+## 2.5 Your Tecno Spark: what it can and cannot do for this project
+
+**Verdict: useful as a GoshBuzz Lite test phone and a real-world privacy target, not as a development device.**
+
+Why not a build target, based on what I could verify:
+
+1. **Tecno gates unlocking behind an account and a wait.** Community guides report that the OEM unlocking toggle
+   stays greyed out until you create a Tecno ID and wait, commonly cited as up to about two weeks.
+   (XDA guide for Spark 20: <https://xdaforums.com/t/guide-rooting-tecno-spark-20-kj5n-twrp-custom-recovery.4667636/>,
+   and the Spark 10 root guide: <https://github.com/AhmadMorningstar/Tecno-Spark-10-Root-Guide>.) A two-week wait
+   between flash attempts is incompatible with development.
+2. **On Unisoc-based models, unlocking has been removed rather than restricted.** Reports for the Spark Go 1
+   (KL4, Unisoc T615) say both `fastboot flashing unlock` and `fastboot oem unlock` fail or are unknown commands
+   even with OEM unlocking enabled, and that the community unlock relies on a chip-level BootROM exploit
+   (CVE-2022-38694). Source: <https://xdaforums.com/t/solved-any-way-to-unlock-the-bootloader-of-tecno-spark-go-1-kl4.4735102/>
+   and the KL4 guide thread. **We will not use that path**, and not only for policy reasons: an exploit-based
+   unlock cannot be part of an installer we hand to ordinary users, and it is a chip-level operation with a real
+   chance of an unrecoverable device.
+3. **No factory images or kernel source published** for Spark models, as far as I could verify. That removes our
+   recovery net and breaks the GPL obligation for any build we would distribute, so a Tecno device build could
+   not legally ship without vendor source we do not have.
+4. **MediaTek-based Spark models are a different story** and sometimes accept `fastboot flashing unlock` after
+   the Tecno ID wait. Unverified for your unit until we check.
+
+This is not a criticism of the hardware; cheap phones are what most of the world uses, and they are exactly who
+this project should serve. But "we cannot build it" and "it cannot be helped" are different statements. Lite is
+the honest answer for this class of device, and being able to say that plainly is part of the point.
+
+### Step 1 (safe, read-only): identify the phone
+
+Turning on USB debugging is a settings change, not a wipe, and can be turned off again. Nothing below writes to
+the device.
+
+```bash
+# On the phone: Settings → About phone → tap "Build number" 7 times
+#   → Settings → System → Developer options → enable "USB debugging"
+# Connect by USB, accept the prompt on the phone, then on the computer:
+
+adb devices                      # expect: <serial>  device
+adb shell getprop ro.product.model
+adb shell getprop ro.product.device        # this is the codename we would need
+adb shell getprop ro.board.platform        # mediatek / ums9230 / ... tells MTK vs Unisoc
+adb shell getprop ro.build.version.release # Android version
+adb shell getprop ro.build.version.security_patch  # the honest patch level to display
+adb shell getprop ro.treble.enabled        # true = a GSI is at least conceivable later
+adb shell getprop ro.boot.flash.locked     # 1 = bootloader locked
+adb shell getprop ro.boot.verifiedbootstate
+```
+
+Then look, by hand, at **Settings → System → Developer options → OEM unlocking**:
+
+- Toggle present and not greyed out → some hope, but still no factory image, so still not a build target.
+- Toggled greyed out → that is the Tecno ID wait, and it confirms the gating above.
+
+**Do not run `fastboot flashing unlock` on this phone.** It erases everything, and on this class of device it
+may also be the last step before a device that will not boot. If you ever want to try it, we do it on a device
+you can afford to lose, after a full backup, and after I have written the recovery plan.
+
+### What we will use it for
+
+- Phase 3 (T3.1): install GoshBuzz Lite and test it against a real, cheap, current phone with vendor bloat —
+  the exact conditions most of our users are in.
+- A source of truth for the permission audit and the privacy-score wording: what does a phone like this actually
+  leak out of the box? Captured on your own device, with your consent, and never uploaded anywhere by us.
+
 ## 3. Devices to avoid for the first build
 
 - Anything with a permanently locked bootloader (many US carrier models, several 2024+ flagships).
@@ -113,13 +176,19 @@ Anything I cannot verify, I will mark as unverified rather than guess.
 3. Confirm the battery is above roughly 50% and use a good USB data cable.
 4. Read the recovery page first, not after.
 
-## 6. Open questions for the owner
+## 6. Decisions made, and what is still open
 
-1. **Budget ceiling** for a test device, in your local currency.
-2. **Where you will buy** (local market, online marketplace, grey import). This changes both price and whether
-   the unit is the correct region variant.
-3. **Do you already own a phone you can sacrifice**, and if so which exact model? If it is a Pixel 6 or newer,
-   we may not need to buy anything for Phase 1.
+Answered 2026-10-21:
 
-When I have those three answers I will finish this document: a concrete buy recommendation, a "how to verify
-before you pay" checklist for that exact listing, and a cost estimate.
+1. **Budget:** none right now. Phase 1 proceeds on the emulator only.
+2. **Existing hardware:** a Tecno Spark. Assessed above; used for Lite testing, not for building.
+3. **License:** decided (GPLv3-or-later / AGPL for services / Apache-2.0 for docs and device data). See
+   [`../../LICENSING.md`](../../LICENSING.md).
+
+Still open, and only needed when a budget appears:
+
+- Budget ceiling and country of purchase, so I can name a specific used model and a "verify before you pay"
+  checklist for that listing.
+- If the Spark turns out to be MediaTek-based and you later buy a second cheap phone, a used Pixel 7a or 8a is
+  still the recommendation for the *first* build: official self-service unlock, published factory images, and a
+  recovery path that does not depend on a vendor account.

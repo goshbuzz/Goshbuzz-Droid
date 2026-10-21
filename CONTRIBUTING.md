@@ -24,11 +24,18 @@ this page before opening a pull request; it will save us both time.
 
 ## Licensing of your contribution
 
-The project license is **not chosen yet** — see [docs/licensing.md](docs/licensing.md). Until `LICENSE`
-exists, do not send large code contributions; small fixes, docs, and test reports are welcome and will be
-re-licensed once the decision is made and contributors are asked to confirm.
+The license split is decided and recorded in [LICENSING.md](LICENSING.md). In short: GPL-3.0-or-later for OS
+code, AGPL-3.0-or-later for `installer-web/` and `ota-server/`, Apache-2.0 for `docs/` and `device-db/`. A
+contribution inherits the license of the directory it lands in. Do not paste code you cannot license that way.
 
-Expect a **DCO** (`Signed-off-by` in each commit), not a CLA, if the recommendation is followed.
+By opening a pull request you agree to the **Developer Certificate of Origin 1.1**, not a CLA. Every commit
+needs a sign-off line, added by:
+
+```bash
+git commit -s -m "component: what changed and why"
+```
+
+See [DCO.md](DCO.md). A pull request without sign-off cannot be merged.
 
 ## What we need most right now (Phase 0/1)
 
@@ -46,7 +53,7 @@ Expect a **DCO** (`Signed-off-by` in each commit), not a CLA, if the recommendat
 ## How to send a change
 
 1. Open an issue first for anything bigger than a typo. Say what problem it solves.
-2. Fork, branch, commit in small logical steps, and sign off: `git commit -s`.
+2. Fork, branch, commit in small logical steps, and sign off each commit: `git commit -s`.
 3. Open a pull request. Describe what you tested and on what device.
 4. Docs changes: keep Markdown simple, use tables and short sentences, and update
    [docs/index.md](docs/index.md) if you add a page.

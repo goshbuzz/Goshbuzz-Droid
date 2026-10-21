@@ -1,0 +1,4 @@
+License: GNU GPL v3 or later (SPDX: GPL-3.0-or-later). See ../LICENSING.md and ../LICENSES/GPL-3.0.txt.
+
+This directory is part of the GoshBuzz OS project core. Any distributed build containing it must publish
+complete corresponding source for that same version.
